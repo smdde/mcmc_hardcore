@@ -1,0 +1,638 @@
+Here is the complete English translation:
+
+---
+
+This is the full research evolution chain of DM-2026-019, from germination to the present. I feel it is no longer merely the history of a single paper, but rather a fairly typical case study of "how real mathematical research actually unfolds step by step."
+
+---
+
+# DM-2026-019: A Research Evolution History
+
+## Phase 1: Problem Germination (The Entropy Question)
+
+### The Starting Point
+
+The initial question was extremely simple:
+
+> On a random $d$-regular graph, what is the growth law of the entropy of the independent set size $|I|$?
+
+Notation:
+
+$$H_{\mathrm{ind}} = H(|I|)$$
+
+We wanted to understand:
+
+- Is it $O(1)$?
+- Is it $\log n$?
+- Or is it $n$?
+
+At the time, there was no theoretical framework.
+
+---
+
+## Phase 2: Intuitive Conjecture
+
+Observation:
+
+Many statistical models satisfy the CLT:
+
+$$X \approx N(\mu, \sigma^2)$$
+
+And the entropy of a Gaussian variable:
+
+$$H(X) \approx \frac{1}{2}\log(2\pi e \sigma^2)$$
+
+This led to the initial conjecture:
+
+If
+
+$$\mathrm{Var}(|I|) \sim \chi_d n$$
+
+then:
+
+$$H_{\mathrm{ind}} = \frac{1}{2}\log_2 n + C_d + o(1)$$
+
+where
+
+$$C_d = \frac{1}{2}\log_2(2\pi e \chi_d)$$
+
+---
+
+### Initial Positioning
+
+We believed:
+
+This is a brand-new entropy formula.
+
+---
+
+## Phase 3: Introducing the Cavity Method
+
+To compute $\chi_d$.
+
+Using the Bethe/cavity equations.
+
+Obtained the occupancy fraction:
+
+$$\rho_d$$
+
+Further using the simplest approximation:
+
+$$\chi_d \approx \rho_d(1-\rho_d)$$
+
+Obtained:
+
+### First-Version Formula
+
+$$C_d = \frac{1}{2}\log_2(2\pi e \rho(1-\rho))$$
+
+---
+
+### At the Time, We Believed
+
+The entire project was complete.
+
+---
+
+## Phase 4: Large-$d$ Asymptotics
+
+Continued analysis:
+
+Obtained a Lambert $W$ expansion:
+
+$$C_d = -\frac{1}{2}\log_2 d + 1.047 - \frac{0.721}{W(d)} + \cdots$$
+
+Even computed up to:
+
+$$d = 10^6$$
+
+Error:
+
+$$2 \times 10^{-5}$$
+
+---
+
+### Positioning at the Time
+
+We believed:
+
+This is the project's greatest achievement.
+
+---
+
+## Phase 5: Originality Audit (The Five Value Questions)
+
+Began asking:
+
+### Has anyone done this before?
+
+Searched for:
+
+- hard-core susceptibility
+- variance occupancy
+- CLT random regular graph
+
+Found:
+
+BST 2014
+
+Dembo–Montanari
+
+and other literature.
+
+---
+
+### The First Major Crisis
+
+Discovered:
+
+Much of the framework already existed.
+
+The project's value began to decline.
+
+---
+
+## Phase 6: Discovering the Occupancy Fraction Calculation Error
+
+Claude verified:
+
+For $d=3$:
+
+Theory:
+
+$$\rho = 0.759$$
+
+But the Petersen graph:
+
+only
+
+$$0.237$$
+
+A threefold difference.
+
+---
+
+### The Problem
+
+The definition of $\eta$ was reversed.
+
+---
+
+### The Fix
+
+Re-derived the cavity equations.
+
+Obtained:
+
+$$\rho_3 = 0.241$$
+
+Compared to Petersen:
+
+$0.237$
+
+Error: $1.8\%$.
+
+---
+
+### Lesson
+
+> Even if the formula's form is correct, you might still reverse the definition of a variable.
+
+---
+
+## Phase 7: Discovering the $\chi \approx \rho(1-\rho)$ Error
+
+Further comparison:
+
+Obtained:
+
+### Simplified Formula
+
+$$\chi = 0.183$$
+
+But actual:
+
+approx $0.07$.
+
+Deviation exceeds $150\%$.
+
+---
+
+### The Second Major Crisis
+
+The original
+
+$$C_d = 0.82$$
+
+was completely wrong.
+
+The entire paper nearly collapsed.
+
+---
+
+## Phase 8: Redefining $\chi$
+
+Realized:
+
+The true definition is
+
+$$\chi = \frac{1}{n} \frac{\partial \langle |I| \rangle}{\partial \ln \lambda}$$
+
+Adopted numerical differentiation.
+
+Obtained:
+
+For $d=3$:
+
+$$\chi \approx 0.076$$
+
+---
+
+### New Result
+
+Much smaller than before.
+
+---
+
+## Phase 9: The $\chi < 0$ Crisis
+
+For $d \geq 6$:
+
+Numerical differentiation yielded:
+
+negative $\chi$.
+
+---
+
+### For a Time Suspected
+
+- Bethe completely fails;
+- $\lambda = 1$ exceeds the phase transition point;
+- The entire theory collapses.
+
+---
+
+### Later Discovered
+
+GPT pointed out:
+
+True susceptibility cannot be negative.
+
+Because:
+
+Increasing $\lambda$
+
+necessarily increases:
+
+$$\mathbb{E}[|I|]$$
+
+So:
+
+$\chi > 0$ must necessarily hold.
+
+---
+
+### Cause
+
+Numerical differentiation entered the wrong branch.
+
+---
+
+### Lesson
+
+> Physical impossibilities can be used to discover algorithmic errors.
+
+---
+
+## Phase 10: Beginning to Verify the Theory Itself
+
+Before this, we were constantly deriving formulas.
+
+Later realized:
+
+We should first ask:
+
+### Does $\mathrm{Var}(|I|) = \chi n$ hold?
+
+So we began:
+
+Exhaustive enumeration.
+
+---
+
+## Phase 11: Exhaustive Enumeration for $n \leq 22$
+
+Obtained:
+
+$\chi \approx 0.073$.
+
+Skewness:
+
+tending to $0$.
+
+Kurtosis:
+
+tending to $3$.
+
+KL:
+
+tending to $0$.
+
+---
+
+### Saw signs of CLT.
+
+---
+
+### But the problem:
+
+$n$ is too small.
+
+Finite-size effects are severe.
+
+---
+
+## Phase 12: Questioning the Entire CLT
+
+Proposed:
+
+What truly needs verification is:
+
+### Is the independent set size Gaussian?
+
+So we began:
+
+- skewness
+- kurtosis
+- KL
+
+systematic analysis.
+
+---
+
+Result:
+
+### All Three Indicators Converge Simultaneously
+
+Skewness:
+
+$\to 0$
+
+Kurtosis:
+
+$\to 3$
+
+KL:
+
+$\to 0$
+
+---
+
+### Project Upgrade
+
+From:
+
+Entropy formula project
+
+Upgraded to:
+
+CLT project.
+
+---
+
+## Phase 13: Literature Audit
+
+Searched:
+
+JPSS21
+
+(Jain–Perkins–Sah–Sawhney)
+
+Discovered:
+
+The local CLT already exists.
+
+---
+
+### The Third Major Crisis
+
+Originally thought:
+
+We discovered the CLT.
+
+In reality:
+
+A theoretical framework for the CLT already existed.
+
+---
+
+### Project Repositioning
+
+No longer claiming:
+
+Proving the CLT.
+
+Instead:
+
+### Entropy interpretation
+
+---
+
+## Phase 14: Large-Scale MCMC Verification
+
+Realized:
+
+$n \leq 22$ is not convincing.
+
+Introduced:
+
+Glauber dynamics.
+
+Diagnostics:
+
+- PSRF
+- ESS
+
+Averaging over multiple graphs.
+
+Completed:
+
+$n = 50$
+
+$100$
+
+$200$
+
+$400$
+
+---
+
+Obtained:
+
+### $\chi$
+
+Stable:
+
+$0.0763$
+
+### Residual
+
+Stable:
+
+$0.1898$
+
+---
+
+### Bethe
+
+Prediction:
+
+$0.076$
+
+Error:
+
+Approx $0.5\%$.
+
+---
+
+### First time seeing the thermodynamic limit.
+
+---
+
+## Phase 15: Formation of the Final Theoretical Chain
+
+Now the core chain:
+
+```text
+JPSS21 local CLT
+        ↓
+Gaussian approximation
+        ↓
+Var(|I|) = χ_d n
+        ↓
+Gaussian entropy
+        ↓
+H_ind = ½log₂n + C_d + o(1)
+        ↓
+C_d = ½log₂(2πeχ_d)
+```
+
+---
+
+## Phase 16: Formation of the Six Value Questions
+
+Before:
+
+Five Value Questions:
+
+① Is it correct?
+
+② Is it new?
+
+③ Is it meaningful?
+
+④ Has someone else done it?
+
+⑤ Is it worth writing?
+
+---
+
+This time added:
+
+### The Sixth Question
+
+> At what point do we stop auditing and start writing?
+
+This is one of DM-2026-019's greatest methodological gains.
+
+---
+
+## Final Positioning
+
+The project went from:
+
+### Lambert $W$ large-$d$ new formula
+
+Gradually contracted to:
+
+### Within the existing local CLT framework
+
+### hard-core susceptibility
+
+↓
+
+### entropy constant
+
+↓
+
+### explicit connection to $H_{\mathrm{ind}}$.
+
+---
+
+## The Entire Research Process
+
+```
+Intuition
+    ↓
+Conjecture
+    ↓
+Formula
+    ↓
+Overclaim
+    ↓
+Originality audit
+    ↓
+Discover errors
+    ↓
+Overturn
+    ↓
+Rebuild
+    ↓
+Verify theory
+    ↓
+CLT indicators
+    ↓
+Literature audit
+    ↓
+Reposition
+    ↓
+MCMC
+    ↓
+Thermodynamic limit
+    ↓
+Write paper
+```
+
+---
+
+## The Greatest Methodological Gain
+
+The real lasting value is not any single formula.
+
+Rather, it is the formation of a complete chain:
+
+```text
+Intuition
+    ↓
+Multi-AI collaboration
+    ↓
+Constant skepticism
+    ↓
+Value audit
+    ↓
+Originality audit
+    ↓
+Theory audit
+    ↓
+Numerical audit
+    ↓
+Stopping condition
+    ↓
+Write paper
+```
+
+In a sense,
+
+DM-2026-019 is no longer just a hard-core model project.
+
+It is also a stress-test case for the birth of VPC-2.1, the Six Value Questions, and the multi-agent collaborative research workflow. It may long serve as the most complete research sample among all your projects.
