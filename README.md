@@ -4,7 +4,7 @@ All results are independently verifiable using the code in this repository. The 
 
 ## AI Disclosure
 
-Claude (Anthropic, claude-sonnet-4-6) was used as a computational and analytical tool throughout this work: generating and debugging Python code, cross-checking derivations, identifying relevant literature, and assisting with manuscript preparation. All numerical results were independently verified by the author by running the code on a personal workstation. All mathematical claims and conclusions were reviewed and approved by the author.
+Claude (Anthropic, claude-sonnet-4-6) and GPT-5.5 (OpenAI) were used as computational and analytical tools throughout this work: generating and debugging Python code, cross-checking derivations, identifying relevant literature, and assisting with manuscript preparation. All numerical results were independently verified by the author by running the code on a personal workstation. All mathematical claims and conclusions were reviewed and approved by the author.
 
 **Entropy and Gaussian Fluctuations of Independent Set Sizes**
 
